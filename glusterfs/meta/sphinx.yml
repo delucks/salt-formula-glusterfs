@@ -15,7 +15,7 @@ doc:
         {%- if pillar.glusterfs.server.get('volumes', {}) %}
         volumes:
           value:
-            {%- for name, volume in pillar.glusterfs.server.volumes.iteritems() %}
+            {%- for name, volume in pillar.glusterfs.server.volumes.items() %}
             {{ name }}: "{{ volume.storage }}"
             {%- endfor %}
         {%- endif %}
@@ -27,7 +27,7 @@ doc:
         {%- if pillar.glusterfs.client.get('volumes', {}) %}
         mounts:
           value:
-            {%- for name, volume in pillar.glusterfs.client.volumes.iteritems() %}
+            {%- for name, volume in pillar.glusterfs.client.volumes.items() %}
             {{ name }}: {{ volume.path }}
             {%- endfor %}
         {%- endif %}

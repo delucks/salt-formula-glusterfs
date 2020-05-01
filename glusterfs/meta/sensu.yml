@@ -7,7 +7,7 @@ check:
     occurrences: 1
     subscribers:
     - local-glusterfs-server
-{%- for volume_name, volume in server.get('volumes', {}).iteritems() %}
+{%- for volume_name, volume in server.get('volumes', {}).items() %}
   local_glusterfs_volume_{{ volume_name }}_{{ grains['fqdn'] }}:
     command: "PATH=$PATH:/etc/sensu/plugins check_glusterfs -v {{ volume_name }} -n {{ volume.bricks|length }} -w 5 -c 1"
     {%- set interval=320+(loop.index*5) %}

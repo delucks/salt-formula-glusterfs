@@ -36,7 +36,7 @@ log_collector:
       splitter: "glusterfs_splitter"
 {%- endif %}
 {%- if client_enabled %}
-{%- for name, volume in client.get('volumes', {}).iteritems() %}
+{%- for name, volume in client.get('volumes', {}).items() %}
     gluster_volume_{{name}}:
       engine: logstreamer
       log_directory: "/var/log"

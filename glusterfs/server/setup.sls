@@ -36,7 +36,7 @@ glusterfs_peers_wait:
 {%- endif %}
 
 {%- if server.volumes is defined %}
-{%- for name, volume in server.volumes.iteritems() %}
+{%- for name, volume in server.volumes.items() %}
 
 {%- if force_compatibility %}
 
@@ -93,7 +93,7 @@ glusterfs_vol_{{ name }}_start:
   {%- endif %}
 
 {%- if volume.options is defined %}
-{%- for key, value in volume.options.iteritems() %}
+{%- for key, value in volume.options.items() %}
 
 glusterfs_vol_{{ name }}_{{ key }}:
   cmd.run:
@@ -115,7 +115,7 @@ glusterfs_vol_{{ name }}_{{ key }}:
 {%- endif %}
 
 {%- if server.recover_peers is defined %}
-{%- for vol_name, vol_data in server.volumes.iteritems() %}
+{%- for vol_name, vol_data in server.volumes.items() %}
 {%- for brick in vol_data.bricks %}
 
 add_gluster_bricks_{{ vol_name }}_{{ brick }}:
